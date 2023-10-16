@@ -1,21 +1,30 @@
-# Python program to check if year is a leap year or not
+class Bank_Account:
+  def __init__(self,account_number,account_holder_name,initial_balance=0):
+    self.__account_number=account_number
+    self.__account_holder_name=account_holder_name
+    self.__account_balance=initial_balance
+  
+  def deposit (self,amount):
+    if amount>0:
+       self.__account_balance+=amount
+       print ("Deposit â‚¹{} new balance â‚¹{}".format(amount,self.__account_balance))
+    else:
+        print ("invalid deposit amount")
+  def withdraw (self,amount):
+    if amount>0 and amount<=self.__account_balance:
+      self.__account_balance-=amount
+      print ("Withdraw â‚¹{}.New balance â‚¹{}".format (amount,self.__account_balance))
+    else:
+      print ("Invalid Withdrawal amount or Insufficient balance. ")
 
-year = 2000
+  def display_balance (self):
+    print (" Account Holder Name for {} account Number {} New Balanceâ‚¹{}".format(self.__account_holder_name,self.__account_number,self.__account_balance))
 
-# To get year (integer input) from the user
-# year = int(input("Enter a year: "))
 
-# divided by 100 means century year (ending with 00)
-# century year divided by 400 is leap year
-if (year % 400 == 0) and (year % 100 == 0):
-    print("{0} is a leap year".format(year))
 
-# not divided by 100 means not a century year
-# year divided by 4 is a leap year
-elif (year % 4 ==0) and (year % 100 != 0):
-    print("{0} is a leap year".format(year))
+Account=Bank_Account(account_number=1235778899,account_holder_name='Akash', initial_balance=5000.0)
 
-# if not divided by both 400 (century year) and 4 (not century year)
-# year is not leap year
-else:
-    print("{0} is not a leap year".format(year))
+Account. display_balance () 
+Account. deposit(500.0)
+Account. withdraw(200.0)
+Account. display_balance ()
